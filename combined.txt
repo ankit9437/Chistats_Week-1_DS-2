@@ -1,0 +1,1077 @@
+"""1. WAP to create the list perform below operaions on it
+	1. print all elements from list by traversing
+	2. get maximum from list
+	3. get minimum from list
+	4. reverse the list
+	5. get sum of all the elements from list
+	6. get average of all elements from list
+	7. sort the list
+	8. remove duplicates
+	9. check if list is empty or not
+	10. clone or copy the list
+	11. add new elements (append and extend)
+	12. remove elements
+	13. update elements
+	14. retrieve element from 3rd and 5th position
+	15. create another list and compare with list created for earlier questions
+	16. shuffle the list and print all elements
+	17. print element and index of that element
+	18. concat two lists
+	19. convert list t array (without using Numpy)
+	20. get unique elements from list
+	21. pop first element from list
+	22. get index of the 1st matching element
+	23. remove all elements from a list
+	24. check whether list containf specific element or not
+	25. check whther element is member of list of not
+	26. get lenght of list
+	27. insert element in sorted list and maintain order
+	28. access last three elements using slice operation"""
+import random
+from array import array
+
+l=[]
+l=[int(x) for x in input().split()]
+for i in range(len(l)):
+    print(l[i])
+print(max(l))
+print(min(l))
+print(l[::-1])
+s=0
+for i in l:
+    s+=i
+print(s)
+print(s//len(l))
+print(l.sort())
+l1=[]
+for i in l:
+    if(i not in l1):
+        l1.append(i)
+print(l1)
+if(len(l)==0):
+    print("List is empty")
+else:
+    print("List is not empty")
+l3=l
+x=int(input("Enter element"))
+l.append(x)
+l.pop()
+print("3rd position",l[2]," 5th position", l[4])
+random.shuffle(l)
+print("Shuffle list",l)
+for i in range(len(l)):
+    print(i,":", l[i])
+l4=[44, 55, 66]
+l5=l+l4
+print("Concatination",l5)
+
+res = array("i", l)
+print("Array",res)
+del l[0]
+print("Deleted 1st",l)
+l1=[]
+for i in range(len(l)):
+    if(l[i] not in l1):
+        l1.append(l[i])
+    else:
+        print("Index of match is",i)
+x=int(input("Enter specific element"))
+if(x in l):
+    print("Specific element exists")
+else:
+    print("No")
+print("Length of list is",len(l))
+
+"""Output
+1 2 3 3 4 4 4 9 7 1
+1
+2
+3
+3
+4
+4
+4
+9
+7
+1
+9
+1
+[1, 7, 9, 4, 4, 4, 3, 3, 2, 1]
+38
+3
+None
+[1, 2, 3, 4, 7, 9]
+List is not empty
+Enter element7
+3rd position 2  5th position 3
+Shuffle list [9, 1, 3, 4, 3, 4, 2, 7, 1, 4]
+0 : 9
+1 : 1
+2 : 3
+3 : 4
+4 : 3
+5 : 4
+6 : 2
+7 : 7
+8 : 1
+9 : 4
+Concatination [9, 1, 3, 4, 3, 4, 2, 7, 1, 4, 44, 55, 66]
+Array array('i', [9, 1, 3, 4, 3, 4, 2, 7, 1, 4])
+Deleted 1st [1, 3, 4, 3, 4, 2, 7, 1, 4]
+Index of match is 3
+Index of match is 4
+Index of match is 7
+Index of match is 8
+Enter specific element1
+Specific element exists
+Length of list is 9
+"""
+
+#10 WAP iterate over more than two lists at the same time
+l1=[1,2,3,4,5]
+l2=[6,7,8,9,10]
+for i in range(len(l1)):
+    print(l1[i],end=" ")
+    print(l2[i])
+
+"""Output
+1 6
+2 7
+3 8
+4 9
+5 10
+""""""11. WAP to find whether given string is a palindrome without using reversed() inbuilt function"""
+
+s="string"
+flag=0
+for i in range(len(s)):
+    if(s[i]!=s[len(s)-1-i]):
+        flag=1
+if(flag==1):
+    print("Not pallindrome")
+else:
+    print("pallindrome")
+"""Output
+Not pallindrome"""#12. Create a tuple and convert it to list
+t=(1,2,3,4,5)
+print("Tuple",t)
+l=list(t)
+print("list",l)
+"""Output
+Tuple (1, 2, 3, 4, 5)
+list [1, 2, 3, 4, 5]
+"""#13. WAP to append sequence to list
+
+my_list = ['geeks', 'for']
+another_list = [6, 0, 4, 1]
+my_list.extend(another_list)
+print (my_list)
+
+"""Output
+['geeks', 'for', 6, 0, 4, 1]""""""14. Listand explain the time complexities of below operations on list
+
+	Copy
+	Append[1]
+	Pop last
+	Pop intermediate
+	Insert
+	Get Item
+	Set Item
+	Delete Item
+	Iteration
+	Get Slice
+	Del Slice
+	Set Slice
+	Extend[1]
+	Sort
+	min(s), max(s)
+	Get Length"""
+
+"""Output
+    Copy: O(n).Because Python goes over all elements in the list and adds a copy of the object reference to the new list 
+	Append[1]: O(1). Because te element is appended to the particular location
+	Pop last: O(1). Because last element can be simply deleted with the help of its location
+	Pop intermediate: O(n). Because the list is traversed to delete the element
+	Insert: O(n). Where n is size of the element
+	Get Item: O(1). Because it can be get with the help of location
+	Set Item: O(1). This doesnot depend on length of list item
+	Delete Item: O(n). Because we have to iterate to delete the item
+	Iteration: O(n). Iteration takes n elements 
+	Get Slice: O(k).  
+	Del Slice O(n). 
+	Set Slice
+	Extend[1]: O(k). Since we have to iterate and then do the append
+	Sort O(nlogn). Because it uses timesort to sort list
+	min(s), max(s): O(n). Because it has to iterate through the list to find min or max
+	Get Length: O(n). because in your RAM, lists are stored as tables (series of contiguous addresses). To know when the table stops the computer needs two things : length and start point. That is why len() is a O(1), the computer stores the value, so it just needs to look it up.
+"""#15. WAP to make all strings from a given list equal by replacing minimum number of characters
+
+def minOperation(arr, N):
+    cntMinOP = 0;
+    M = len(arr[0]);
+    hash = [[0 for i in range(M)] for j in range(256)];
+    for i in range(N):
+        for j in range(M):
+            hash[ord(arr[i][j])][j] += 1;
+    #print(hash)
+    for i in range(M):
+
+        Sum = 0;
+        Max = 0;
+        for j in range(256):
+            Sum += hash[j][i];
+            Max = max(Max, hash[j][i]);
+        cntMinOP += (Sum - Max);
+    return cntMinOP;
+if __name__ == '__main__':
+    arr = ["abcd", "bcde", "cdef"];
+    N = len(arr);
+    print(minOperation(arr, N));
+
+"""Outpuy
+8""""""16. Given two list of Holes and Balls consisting of N and M integers respectively, denoting the diameter of holes and balls respectively. M number of balls are made to roll from A to B on a sloping surface with N holes, each having different depth.
+"""#17. WAP to extract elements with Frequency greater than K
+
+l=[1,1,2,2,5,5,7,7,7,1,9,2,5,10]
+K=int(input("enter frequency"))
+res = []
+for i in l:
+    freq = l.count(i)
+    if freq > K and i not in res:
+        res.append(i)
+print(res)
+"""Output
+enter frequency2
+[1, 2, 5, 7]
+""""""18. WAP to extract elements with equal frequency as value
+Input : test_list = [4, 3, 2, 2, 3, 4, 1, 3, 2, 4, 4]
+Output : [1, 3, 4] """
+
+l=[4, 3, 2, 2, 3, 4, 1, 3, 2, 4, 4]
+res = []
+for i in range(len(l)):
+    freq = l.count(l[i])
+    K=l[i]
+    if freq == K and l[i] not in res:
+        res.append(l[i])
+print(res)
+"""Output
+[4, 3, 1]
+"""#19. Create the nested list and extract elements of same index
+l=[[1,2,3],[4,5,6],[7,8,9]]
+for i in range(len(l)):
+    for j in range(len(l[i])):
+        print(l[j][i], end=" ")
+    print("\n")
+
+"""Output
+1 4 7 
+
+2 5 8 
+
+3 6 9 
+"""
+"""2. create two losts and perform below operations
+	1. concatination
+	2. repetations"""
+
+l1=[1,2,3,4]
+l2=[5,6,7,8]
+print(l1+l2)
+print("Repeted list")
+for i in l1:
+    print(i, i,end=" ")
+
+"""Output
+[1, 2, 3, 4, 5, 6, 7, 8]
+Repeted list
+1 1 2 2 3 3 4 4 """#20. WAP to update the elements from list who are greater than n (ex. elements greater than 10)
+l=[12,23,34,67,11,10,34]
+for i in range(len(l)):
+    if(l[i]>30):
+        l[i]=1
+print(l)
+"""Output
+[12, 23, 1, 1, 11, 10, 1]"""#21. WAP to print True if any value in a list is divisible by 2, use "any" function
+l=[1,2,3,4,5,6,7,8]
+if(any(l[i]%2==0) for i in range(len(l))):
+    print(True)
+else:
+    print(False)
+"""Output
+True"""#22. WAP to print True if all values in a list are negative, use "all" function
+l=[1,2,3,4,5,6,7,8]
+if(all(l[i]<0) for i in range(len(l))):
+    print(True)
+else:
+    print(False)
+"""Output
+False"""#23. What is diffrence between reverse and reversed
+
+"""reverse() actually reverses the elements in the container. reversed() doesn't actually reverse anything, it
+merely returns an object that can be used to iterate over the container's elements in reverse order.""""""24. Is it pssible to sort an list of int having None in it. What will happen if we try to perform
+any operation on such lists."""
+l=[1,2,None,5,9,4,0]
+l.sort()
+"""Output
+It is not possible to sort int list with None in it because None can't be compared with int"""#25. Implement stack and queue using list
+
+stack=[]
+n=int(input("How many elements for stack"))
+for i in range(n):
+    stack.append(int(input()))
+que=[]
+n=int(input("How many elements for queuq"))
+for i in range(n):
+    que.append(int(input()))
+print(stack)
+print(que)
+"""Output
+How many elements for stack4
+1
+2
+3
+4
+How many elements for queuq4
+6
+7
+8
+9
+[1, 2, 3, 4]
+[6, 7, 8, 9]
+"""#26. Reverse the list using slice
+l=[]
+l=[int(x) for x in input().split()]
+print(l)
+print(l[::-1])
+"""Output
+1 2 3 4 5
+[1, 2, 3, 4, 5]
+[5, 4, 3, 2, 1]
+""""""27. Create tuple and perform below operations on it
+	1. get size of tuple using getsizefo() and __sizeof__()
+	2. access tuple using index and slice operations
+	3. get length of tuple
+	4. ge tcount of element
+	5. sort the tuple in natural order
+	6. fin min and max from tuple
+	7. check if given element exist in the tuple or not"""
+import sys
+
+mytuple = ("apple", "banana", "cherry","Chistats")
+print("Size is: ",sys.getsizeof(mytuple))
+index = mytuple.index('banana')
+print('The index of banana:', index)
+print("Length of tuple: ",len(mytuple))
+x = mytuple.count('cherry')
+print("Cherry occurs ",x)
+tup=(4,7,1,9,2,4)
+print(sorted(tup))
+print(min(tup))
+print(max(tup))
+if(7 in tup):
+    print('7 exists')
+else:
+    print("Do not exist")
+
+"""Output
+Size is:  80
+The index of banana: 1
+Length of tuple:  4
+Cherry occurs  1
+[1, 2, 4, 4, 7, 9]
+1
+9
+7 exists
+"""#28. concatinate two tuples and create third
+tup1=(1,2,3,4)
+tup2=(5,6,7)
+print(tup1+tup2)
+
+"""Output
+(1, 2, 3, 4, 5, 6, 7)"""#29. perform repetation operation on tuple
+numbers = (0, 1, 2) * 3
+print (numbers)
+"""Output
+(0, 1, 2, 0, 1, 2, 0, 1, 2)"""#3. WAP to retriev elemnts from random index
+
+l=[]
+l=[int(x) for x in input().split()]
+r=int(input("Index?"))
+print(l[r])
+
+"""Output
+1 2 3 4 5 6
+Index?3
+4
+"""#30. Create two tuples and compare elements using cmp
+tuple1, tuple2 = (123, 'xyz'), (456, 'abc')
+print (cmp(tuple1, tuple2))
+"""Output
+-1""""""31. a= 10, b=20, c=30, d=40
+	Perform packing and unpacking of above elements and print them"""
+
+x = ("Guru99", 20, "Education")    # tuple packing
+(company, emp, profile) = x    # tuple unpacking
+print(company)
+print(emp)
+print(x)
+"""Output
+Guru99
+20
+('Guru99', 20, 'Education')"""#32. What is difference between list and tuple
+
+"""List: It is mutable. It is more time consuming.It consumes more memory. It has several in-built functions.
+
+Tuple: It is immutable. It takes less time as compared to list. It consumes less memory. It has less inbuilt functions."""#33. What is internal representation of list and tuple
+
+"""Python lists are internally represented as arrays. The idea used is similar to implementation of vectors in
+C++ or ArrayList in Java. The costly operations are inserting and deleting items near the beginning (as everything
+ has to be moved). Insert at the end also becomes costly if preallocated space becomes full.
+
+ """#34. Create list and convert it to tuple and viceversa
+
+l=[1,2,3,4,5]
+print(tuple(l))
+l=(1,2,3,4)
+print(list(l))
+
+"""Output
+(1, 2, 3, 4, 5)
+[1, 2, 3, 4]"""#35. convert list of lists to tuple of tuple
+
+test_list = [['Gfg', 'is', 'Best'], ['Gfg', 'is', 'love'],
+             ['Gfg', 'is', 'for', 'Geeks']]
+
+print("The original list is : ",(test_list))
+
+res = tuple(tuple(sub) for sub in test_list)
+print("The converted data : " ,(res))
+
+"""Output
+The original list is :  [['Gfg', 'is', 'Best'], ['Gfg', 'is', 'love'], ['Gfg', 'is', 'for', 'Geeks']]
+The converted data :  (('Gfg', 'is', 'Best'), ('Gfg', 'is', 'love'), ('Gfg', 'is', 'for', 'Geeks'))"""#36. WAP to create a tuple with different data types, print the element, address and type
+
+tuplex = ("tuple", False, 3.2, 1)
+print(tuplex)
+print(id(tuplex))
+print(type(tuplex))
+"""Output
+('tuple', False, 3.2, 1)
+2577255657784
+<class 'tuple'>
+""""""37. Create tuple and add element in it. As tuples are immutable, will it able to add new element in the tuple, provided the reason in both Yes and No cases."""
+
+T1=(10,50,20,9,40,25,60,30,1,56)
+L1=list(T1)
+print(T1)
+L1.append(100)
+T1=tuple(L1)
+print(T1)
+
+"""Output
+(10, 50, 20, 9, 40, 25, 60, 30, 1, 56)
+(10, 50, 20, 9, 40, 25, 60, 30, 1, 56, 100)
+Tuple is immutable so it is converted to list to append elements""""""38. Create tuple and remove element it. As tuples are immutable, will it able to add new element in the tuple, provided the reason in both Yes and No cases."""
+T1=(10,50,20,9,40,25,60,30,1,56)
+L1=list(T1)
+print(T1)
+L1.remove(10)
+T1=tuple(L1)
+print(T1)
+
+"""Output
+(10, 50, 20, 9, 40, 25, 60, 30, 1, 56)
+(50, 20, 9, 40, 25, 60, 30, 1, 56)
+tuple is converted to list to delete element"""#40. WAP to convert a list of tuples into a dictionary
+
+A = [("Adwaita", 5), ("Aadrika", 5), ("Babai", 37), ("Mona", 7), ("Sanj", 25), ("Sakya", 30)]
+di = {}
+di=dict(A)
+print(di)
+
+"""Output
+{'Adwaita': 5, 'Aadrika': 5, 'Babai': 37, 'Mona': 7, 'Sanj': 25, 'Sakya': 30}"""
+#39. WAP to convert tuple of chars to string
+
+tup = ('a', 'n', 'k', 'i', 's', 'g', 'u', 'p', 'a', 't')
+print(''.join(tup))
+
+"""Output
+ankisgupat"""#4. WAP to generate all permutations of a list
+
+import itertools
+l=[]
+l=[int(x) for x in input().split()]
+print(list(itertools.permutations(l)))
+
+"""Output
+1 2 3
+[(1, 2, 3), (1, 3, 2), (2, 1, 3), (2, 3, 1), (3, 1, 2), (3, 2, 1)]
+"""
+"""41. WAP to replace last value of tuples in a list.
+Sample list: [(10, 20, 40), (40, 50, 60), (70, 80, 90)]
+Expected Output: [(10, 20, 100), (40, 50, 100), (70, 80, 100)]"""
+
+l = [(10, 20, 40), (40, 50, 60), (70, 80, 90)]
+print(l)
+print([t[:-1] + (100,) for t in l])
+
+"""Output
+[(10, 20, 40), (40, 50, 60), (70, 80, 90)]
+[(10, 20, 100), (40, 50, 100), (70, 80, 100)]
+"""#42. WAP to remove an empty tuple(s) from a list of tuples.
+
+L = [(), (), ('a', 'b'), ('a', 'b', 'c'), ('d')]
+L = [t for t in L if t]
+print(L)
+
+"""Output
+[('a', 'b'), ('a', 'b', 'c'), 'd']""""""43. There is a tuple, each item represent name and marks of student. List Ex. [(Karthik, 78, 67, 93), (Sarthak, 81, 73, 92)]
+	1. We need to identify first three toppers of the batch. Print their score and average.
+	2. We need to get the topper in each subject
+	3. We need to know te list of students failed in the any subject (passing marks = 40)"""
+
+from heapq import nlargest
+l=[('Karthik', 78, 67, 93), ('Sarthak', 81, 73, 92),('Anish', 8, 3, 9),('Anhu', 18, 33, 89)]
+#First 3 toppers
+top=[]
+dit={}
+for i in range(len(l)):
+    sum=0
+    for j in range(1,4):
+        sum+=l[i][j]
+    dit[l[i][0]]=sum
+#print(dit)
+ThreeHighest = nlargest(3, dit, key = dit.get)
+print("Top 3")
+for val in ThreeHighest:
+    print(val, ":", dit.get(val))
+print("People who failed")
+for i in (dit):
+    if(dit[i]<=40):
+        print(i)
+
+"""Output
+Top 3
+Sarthak : 246
+Karthik : 238
+Anhu : 140
+People who failed
+Anish"""
+
+#44. WAP to convert of list of tuples to list of lists
+
+l = [(1, 2), (3, 4), (5, 6)]
+print("The original list of tuples : ",l)
+
+res = [list(ele) for ele in l]
+print("The converted list of list : ",res)
+"""Output
+The original list of tuples :  [(1, 2), (3, 4), (5, 6)]
+The converted list of list :  [[1, 2], [3, 4], [5, 6]]"""#45. Sort the list of tuples by second item
+
+def Sort_Tuple(tup):
+    lst = len(tup)
+    for i in range(0, lst):
+
+        for j in range(0, lst - i - 1):
+            if (tup[j][1] > tup[j + 1][1]):
+                temp = tup[j]
+                tup[j] = tup[j + 1]
+                tup[j + 1] = temp
+    return tup
+
+tup = [('for', 24), ('is', 10), ('Geeks', 28),
+       ('Geeksforgeeks', 5), ('portal', 20), ('a', 15)]
+print(Sort_Tuple(tup))
+
+"""Output
+[('Geeksforgeeks', 5), ('is', 10), ('a', 15), ('portal', 20), ('for', 24), ('Geeks', 28)]
+"""#46. remove the tuples of length 3 from list
+
+test = [(4, 5), (4,), (8, 6, 7), (1,), (3, 4, 6, 7)]
+print("The original list : " ,test)
+K = 3
+res = [ele for ele in test if len(ele) != K]
+print("Filtered list : " + str(res))
+
+"""Output
+The original list :  [(4, 5), (4,), (8, 6, 7), (1,), (3, 4, 6, 7)]
+Filtered list : [(4, 5), (4,), (1,), (3, 4, 6, 7)]
+"""#47. WAP to sort the list in tuple
+
+def Sort_Tuple(tup):
+    # getting length of list of tuples
+    lst = len(tup)
+    for i in range(0, lst):
+
+        for j in range(0, lst - i - 1):
+            if (tup[j][1] > tup[j + 1][1]):
+                temp = tup[j]
+                tup[j] = tup[j + 1]
+                tup[j + 1] = temp
+    return tup
+
+tup = [('for', 24), ('is', 10), ('or', 28),
+       ('Chistats', 5), ('port', 20), ('a', 15)]
+
+print(Sort_Tuple(tup))
+
+"""Output
+[('Chistats', 5), ('is', 10), ('a', 15), ('port', 20), ('for', 24), ('or', 28)]""""""48. WAP to create the dictionry and perform below steps
+	1. print elements from it in key value format using all methods of iteration
+	2. update the elements from above dictionary
+	3. delete elements
+	4. empty the directory
+	5. get size of dictionary
+	6. return and remove the value associsted with specific key
+	7. remove arbitary item from the dictionary
+	8. get all keys from the dictionary
+	9. get all values from dictionary
+	10. get list of tuples from the dict and represent it in the key value pair
+	11. create the copy of the list
+	12. Update the dictionary value
+	13. get dictionary with the specified keys and value
+	14. filter the dictionary """
+import sys
+
+dict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964,
+  "year": 2020
+}
+print(dict)
+d1 = {"car": 2}
+
+dict.update(d1)
+print(dict)
+dict.pop("model")
+print(dict)
+dict.clear()
+dict = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964,
+  "year": 2020
+}
+print("Size of dictionary is: " + str(sys.getsizeof(dict)) + "bytes")
+del dict['model']
+print(dict)
+print(dict.keys())
+print(dict.values())
+
+"""Output
+{'brand': 'Ford', 'model': 'Mustang', 'year': 2020}
+{'brand': 'Ford', 'model': 'Mustang', 'year': 2020, 'car': 2}
+{'brand': 'Ford', 'year': 2020, 'car': 2}
+Size of dictionary is: 240bytes
+{'brand': 'Ford', 'year': 2020}
+dict_keys(['brand', 'year'])
+dict_values(['Ford', 2020])
+"""
+#49. explore the function setdefault
+
+car = {
+  "brand": "Ford",
+  "model": "Mustang",
+  "year": 1964
+}
+
+x = car.setdefault("model", "Bronco")
+print(x)
+print(car)
+
+"""Output
+Mustang
+{'brand': 'Ford', 'model': 'Mustang', 'year': 1964}
+"""#5. WAP to get difference between two lists
+
+l1=[1,13,5,17,9]
+l2=[2,42,67,81,10]
+
+print(l1)
+print(l2)
+print("Diffrence is")
+for i in range(len(l2)):
+    print(l2[i]-l1[i],end=" ")
+"""Output
+[1, 13, 5, 17, 9]
+[2, 42, 67, 81, 10]
+Diffrence is
+1 29 62 64 1 """
+#50. WAP to get occurances of each letter present in  given string
+
+test_str = "Chiststs is awesome"
+
+all_freq = {}
+
+for i in test_str:
+    if i in all_freq:
+        all_freq[i] += 1
+    else:
+        all_freq[i] = 1
+print("Count of all characters is is :\n "
+      + str(all_freq))
+"""Output
+Count of all characters is is :
+ {'C': 1, 'h': 1, 'i': 2, 's': 5, 't': 2, ' ': 2, 'a': 1, 'w': 1, 'e': 2, 'o': 1, 'm': 1}
+""""""51. There is a dict, each item represent name and marks of student.
+	1. We need to identify first three toppers of the batch. Print their score and average.
+	2. We need to get the topper in each subject
+	3. We need to know te list of students failed in the any subject (passing marks = 40)
+	4. Display marks of student by taking student name as input from console"""
+
+from heapq import nlargest
+l=[('Karthik', 78, 67, 93), ('Sarthak', 81, 73, 92),('Anish', 8, 3, 9),('Anhu', 18, 33, 89)]
+#First 3 toppers
+top=[]
+dit={}
+for i in range(len(l)):
+    sum=0
+    for j in range(1,4):
+        sum+=l[i][j]
+    dit[l[i][0]]=sum
+#print(dit)
+ThreeHighest = nlargest(3, dit, key = dit.get)
+print("Top 3")
+for val in ThreeHighest:
+    print(val, ":", dit.get(val))
+print("People who failed")
+for i in (dit):
+    if(dit[i]<=40):
+        print(i)
+
+"""Output
+Top 3
+Sarthak : 246
+Karthik : 238
+Anhu : 140
+People who failed
+Anish"""#52. Ways to sort list of dictionaries by values in Python – Using itemgetter
+
+from operator import itemgetter
+lis = [{"name": "Ankit", "age": 22},
+       {"name": "Kunal", "age": 16},
+       {"name": "Sarthak", "age": 19}]
+
+print(sorted(lis, key=itemgetter('age')))
+"""Output
+[{'name': 'Kunal', 'age': 16}, {'name': 'Sarthak', 'age': 19}, {'name': 'Ankit', 'age': 22}]
+"""#53. Ways to sort list of dictionaries by values in Python – Using lambda function
+
+lis = [{"name": "Ankit", "age": 22},
+       {"name": "Kunal", "age": 16},
+       {"name": "Sarthak", "age": 19}]
+
+print (sorted(lis, key = lambda i: i['age']))
+
+"""Output
+[{'name': 'Kunal', 'age': 16}, {'name': 'Sarthak', 'age': 19}, {'name': 'Ankit', 'age': 22}]
+"""#54. WAP to merge two Dictionaries
+
+fruits = {"apple": 2, "orange" : 3, "tangerine": 5}
+dry_fruits = {"cashew": 3, "almond": 4, "pistachio": 6}
+fruits.update(dry_fruits)
+print(fruits)
+
+"""Output
+{'apple': 2, 'orange': 3, 'tangerine': 5, 'cashew': 3, 'almond': 4, 'pistachio': 6}
+"""#55. Convert Key-Value list Dictionary to List of Lists
+
+test_dict = {'Chistats': [1, 3, 4], 'is': [7, 6], 'best': [4, 5]}
+print("The original dictionary is : " + str(test_dict))
+res = []
+for key, val in test_dict.items():
+    res.append([key] + val)
+print("The converted list is : " + str(res))
+
+"""Output
+The original dictionary is : {'Chistats': [1, 3, 4], 'is': [7, 6], 'best': [4, 5]}
+The converted list is : [['Chistats', 1, 3, 4], ['is', 7, 6], ['best', 4, 5]]
+"""#56. Convert List to List of dictionaries
+
+test_list = ["Gfg", 3, "is", 8, "Best", 10, "for", 18, "Geeks", 33]
+
+print("The original list : " + str(test_list))
+
+key_list = ["name", "number"]
+n = len(test_list)
+res = []
+for idx in range(0, n, 2):
+    res.append({key_list[0]: test_list[idx], key_list[1]: test_list[idx + 1]})
+print("The constructed dictionary list : " + str(res))
+
+"""Output
+The original list : ['Gfg', 3, 'is', 8, 'Best', 10, 'for', 18, 'Geeks', 33]
+The constructed dictionary list : [{'name': 'Gfg', 'number': 3}, {'name': 'is', 'number': 8}, {'name': 'Best', 'number': 10}, {'name': 'for', 'number': 18}, {'name': 'Geeks', 'number': 33}]
+
+"""#57. Convert Lists of List to Dictionary
+
+test_list = [['a', 'b', 1, 2], ['c', 'd', 3, 4], ['e', 'f', 5, 6]]
+print("The original list is : " + str(test_list))
+res = dict()
+for sub in test_list:
+    res[tuple(sub[:2])] = tuple(sub[2:])
+print("The mapped Dictionary : " + str(res))
+
+"""Output
+The original list is : [['a', 'b', 1, 2], ['c', 'd', 3, 4], ['e', 'f', 5, 6]]
+The mapped Dictionary : {('a', 'b'): (1, 2), ('c', 'd'): (3, 4), ('e', 'f'): (5, 6)}
+"""#58. Convert List of Dictionaries to List of Lists
+
+test_list = [{'Nikhil': 17, 'Akash': 18, 'Akshat': 20},
+             {'Nikhil': 21, 'Akash': 30, 'Akshat': 10},
+             {'Nikhil': 31, 'Akash': 12, 'Akshat': 19}]
+
+print("The original list is : " + str(test_list))
+res = []
+for idx, sub in enumerate(test_list, start=0):
+    if idx == 0:
+        res.append(list(sub.keys()))
+        res.append(list(sub.values()))
+    else:
+        res.append(list(sub.values()))
+print("The converted list : " + str(res))
+
+"""Output
+The original list is : [{'Nikhil': 17, 'Akash': 18, 'Akshat': 20}, {'Nikhil': 21, 'Akash': 30, 'Akshat': 10}, {'Nikhil': 31, 'Akash': 12, 'Akshat': 19}]
+The converted list : [['Nikhil', 'Akash', 'Akshat'], [17, 18, 20], [21, 30, 10], [31, 12, 19]]
+"""#59. Convert key-values list to flat dictionary
+
+from itertools import product
+test_dict = {'month': [1, 2, 3],
+             'name': ['Jan', 'Feb', 'March']}
+print("The original dictionary is : " + str(test_dict))
+res = dict(zip(test_dict['month'], test_dict['name']))
+
+print("Flattened dictionary : " + str(res))
+
+"""Output
+The original dictionary is : {'month': [1, 2, 3], 'name': ['Jan', 'Feb', 'March']}
+Flattened dictionary : {1: 'Jan', 2: 'Feb', 3: 'March'}"""#6. WAP to convert the list of string to chars
+
+string='chistats'
+print(string)
+print(list(string))
+"""Output
+chistats
+['c', 'h', 'i', 's', 't', 'a', 't', 's']"""
+#60. Convert a list of Tuples into Dictionary
+
+def Convert(tup, di):
+    for a, b in tup:
+        di.setdefault(a, []).append(b)
+    return di
+tups = [("akash", 10), ("gaurav", 12), ("anand", 14),
+        ("suraj", 20), ("akhil", 25), ("ashish", 30)]
+dictionary = {}
+print(Convert(tups, dictionary))
+
+"""Output
+{'akash': [10], 'gaurav': [12], 'anand': [14], 'suraj': [20], 'akhil': [25], 'ashish': [30]}
+"""#61. Convert Nested dictionary to Mapped Tuple
+
+test_dict = {'gfg': {'x': 5, 'y': 6}, 'is': {'x': 1, 'y': 4},
+             'best': {'x': 8, 'y': 3}}
+
+print("The original dictionary is : " + str(test_dict))
+res = [(key, tuple(sub[key] for sub in test_dict.values()))
+       for key in test_dict['gfg']]
+print("The grouped dictionary : " + str(res))
+
+"""Output
+
+The original dictionary is : {'gfg': {'x': 5, 'y': 6}, 'is': {'x': 1, 'y': 4}, 'best': {'x': 8, 'y': 3}}
+The grouped dictionary : [('x', (5, 1, 8)), ('y', (6, 4, 3))]""""""WAP to find winner of election
+Input :  votes[] = {"john", "johnny", "jackie",
+                    "johnny", "john", "jackie",
+                    "jamie", "jamie", "john",
+                    "johnny", "jamie", "johnny",
+                    "john"};"""
+
+votes=["john", "johnny", "jackie",
+                    "johnny", "john", "jackie",
+                    "jamie", "jamie", "john",
+                    "johnny", "jamie", "johnny",
+                    "john"]
+
+counter = 0
+num = votes[0]
+length=len(votes[0])
+for i in votes:
+    frequency = votes.count(i)
+    l1=len(i)
+    if (frequency > counter):
+        counter = frequency
+        num = i
+        length=len(i)
+    elif(frequency==counter):
+        num=min(i,num)
+
+print(num)
+
+"""Output
+john"""
+
+#7. WAP to convert Shallow list => a list of lists => [[a,b,c],[d,e,f],[g,h,l]] to flat list [a,b,c,d,e,f,g,h,l]
+
+l = [[3, 5], [7, 3, 9], [1, 12]]
+print(l)
+res = sorted([j for i in l for j in i])
+print("Converted list " ,res)
+
+"""Output
+[[3, 5], [7, 3, 9], [1, 12]]
+Converted list  [1, 3, 3, 5, 7, 9, 12]
+"""#8. WAP check whether two lists are circularly identical
+
+def circle(list1, list2):
+    list3 = list1 * 2
+    for x in range(0, len(list1)):
+        z = 0
+        for y in range(x, x + len(list1)):
+            if list2[z] == list3[y]:
+                z += 1
+            else:
+                break
+        if z == len(list1):
+            return True
+    return False
+list1 = [10, 10, 0, 0, 10]
+list2 = [10, 10, 10, 0, 0]
+list3 = [1, 10, 10, 0, 0]
+if (circle(list1, list2)):
+    print("Yes")
+else:
+    print("No")
+if (circle(list2, list3)):
+    print("Yes")
+else:
+    print("No")
+
+"""Output
+Yes
+No
+"""#9. WAP to get second smallest number from list
+l=[11,12,13,14,15,16]
+m=min(l)
+l.remove(m)
+m=min(l)
+print(m)
+
+"""Output
+12""""""iii. WAP to create list and print the elements, type and address of the elements from list. Shallow copy list
+ and again print the elements, type and address of the elements. Deep copy the list and print the elements, type
+ and address of the elements."""
+
+import copy
+l=[]
+l=[int(x) for x in input().split()]
+print(l)
+print(type(l))
+for i in range(len(l)):
+    print(id(l[i]))
+l1=copy.copy(l)
+print(l1)
+print(type(l1))
+for i in range(len(l1)):
+    print(id(l1[i]))
+
+l2=copy.deepcopy(l)
+print(l2)
+print(type(l2))
+for i in range(len(l2)):
+    print(id(l2[i]))
+
+"""Output
+1 2 3
+[1, 2, 3]
+<class 'list'>
+140728000019520
+140728000019552
+140728000019584
+[1, 2, 3]
+<class 'list'>
+140728000019520
+140728000019552
+140728000019584
+[1, 2, 3]
+<class 'list'>
+140728000019520
+140728000019552
+140728000019584
+"""
+"""iv. WAP to create two lists of same elements and print their address, element type, element address
+and elements. Check the equality of lists."""
+
+l1=[1,2,3,4]
+l2=[1,2,3,4]
+print("For l1")
+print(l1)
+print(type(l1))
+for i in range(len(l1)):
+    print(id(l1[i]))
+print("For l2")
+print(l2)
+print(type(l2))
+for i in range(len(l1)):
+    print(id(l2[i]))
+"""Output
+For l1
+[1, 2, 3, 4]
+<class 'list'>
+140728000019520
+140728000019552
+140728000019584
+140728000019616
+For l2
+[1, 2, 3, 4]
+<class 'list'>
+140728000019520
+140728000019552
+140728000019584
+140728000019616
+
+From the output we can see that the lists are stored in same address
+""""""Input Operations
+1. raw_input()
+2. input()"""
+
+"""Python input() function is used to take the values from the user. This function is called to tell the program 
+to stop and wait for the user to input the values. 
+Python raw_input function is used to get the values from the user. We call this function to tell the program to 
+stop and wait for the user to input the values. It is a built-in function. The input function is used only in 
+Python 2.x version.""""""Output Operations
+3. print()
+4. Omitting newlines
+5. Concatenation"""
+
+"""print is used in python to print anything
+We can omit new lines by using write operation or through concatenation.
+  Through concatenation operation we can add strings by using '+' operator""""""i. Define ways to create the list
+
+ii. Solve prerequisites using
+	1. hard coded inputs
+	2. take input from user"""
+
+"""Output
+List can be created by using '[]' brackets.
+Hardcoded inputs are the inputs that we provide during the code and input from the user means we can take input
+durinf the runtime""""""v. WAP to create the clone and alias of the list and print their address, element type, element address
+and elements Questions""""""v. What are the iteration ways available to acces elements of list"""
+"""1. List can be accessed by using range function
+       for x in range(len(lst)): 
+           print(lst[x]) 
+    2. List elements can be accessed by using loop
+        for x in list:
+            print(x)
+    3.List Comprehension to iterate through a list in Python
+        [print(x) for x in lst]
+    4. Using enumerate
+        for x, res in enumerate(lst): 
+            print (x,":",res)
+    5.Using lamda function
+    res = list(map(lambda x:x, lst))
+        print(res)"""
